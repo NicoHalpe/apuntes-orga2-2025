@@ -1,0 +1,342 @@
+<!DOCTYPE html><html><head>
+      <title>ABI</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/nico/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.19/crossnote/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#c5c8c6;background-color:#27292c!important;border:#43484c;border-radius:3px}pre[class*=language-]{padding:1em}code[class*=language-] .token.cdata,code[class*=language-] .token.comment,code[class*=language-] .token.doctype,code[class*=language-] .token.prolog,pre[class*=language-] .token.cdata,pre[class*=language-] .token.comment,pre[class*=language-] .token.doctype,pre[class*=language-] .token.prolog{color:#7c7c7c}code[class*=language-] .token.punctuation,pre[class*=language-] .token.punctuation{color:#96cbfe}code[class*=language-] .namespace,pre[class*=language-] .namespace{opacity:.7}code[class*=language-] .token.constant,pre[class*=language-] .token.constant{color:#9c9}code[class*=language-] .token.boolean,code[class*=language-] .token.function-name,code[class*=language-] .token.number,pre[class*=language-] .token.boolean,pre[class*=language-] .token.function-name,pre[class*=language-] .token.number{color:#ff73fd}code[class*=language-] .token.tag,pre[class*=language-] .token.tag{color:#96cbfe}code[class*=language-] .token.selector,pre[class*=language-] .token.selector{color:#96cbfe}code[class*=language-] .token.attr-name,pre[class*=language-] .token.attr-name{color:#c6c5fe}code[class*=language-] .token.string,pre[class*=language-] .token.string{color:#a8ff60}code[class*=language-] .token.char,pre[class*=language-] .token.char{color:#ff8000}code[class*=language-] .token.entity,pre[class*=language-] .token.entity{color:#ffd2a7}code[class*=language-] .token.url,pre[class*=language-] .token.url{color:#7c7c7c}code[class*=language-] .token.operator,pre[class*=language-] .token.operator{color:#ededed}code[class*=language-] .token.atrule,code[class*=language-] .token.attr-value,code[class*=language-] .token.keyword,pre[class*=language-] .token.atrule,pre[class*=language-] .token.attr-value,pre[class*=language-] .token.keyword{color:#cfcb90}code[class*=language-] .token.function,pre[class*=language-] .token.function{color:#ffd2a7}code[class*=language-] .token.class-name,pre[class*=language-] .token.class-name{color:#ffd2a7}code[class*=language-] .token.variable,pre[class*=language-] .token.variable{color:#c6c5fe}code[class*=language-] .token.important,code[class*=language-] .token.regex,pre[class*=language-] .token.important,pre[class*=language-] .token.regex{color:#e9c062}code[class*=language-] .token.bold,code[class*=language-] .token.important,pre[class*=language-] .token.bold,pre[class*=language-] .token.important{font-weight:700}code[class*=language-] .token.italic,pre[class*=language-] .token.italic{font-style:italic}code[class*=language-] .token.entity,pre[class*=language-] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#c5c8c6;background-color:#1d1f21;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#fff}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#9ba09d}html body strong{color:#fff}html body del{color:#9ba09d}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#ddd;text-decoration:none}html body a:hover{color:#cecece;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#9ba09d;background-color:#303337;border-left:4px solid #43484c}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#43484c;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#fff}html body table td,html body table th{border:1px solid #43484c;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#fff;background-color:#303337;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#43484c;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#fff;border:1px solid #43484c;border-bottom:2px solid #35393c;padding:2px 4px;background-color:#303337;border-radius:3px}@media print{html body{background-color:#1d1f21}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#fff;page-break-after:avoid}html body blockquote{color:#9ba09d}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}html body a{text-decoration:underline}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="abi-aplication-binary-interface">ABI (Aplication Binary Interface) </h1>
+<p>En la teórica vieron contratos que definen cómo llamar a una función de C y el uso de los registros y la pila (stack). Son contratos porque no hay nada que nos ate realmente a esas definiciones, nada en hardware al menos. Es el modo en que el compilador de C lo maneja, y las reglas que debemos seguir desde assembler para interactuar con programas creados en C. Repasémoslos brevemente.</p>
+<h2 id="contrato-de-funciones">Contrato de funciones </h2>
+<p>Cuando declaramos una función en C, por ejemplo:</p>
+<pre data-role="codeBlock" data-info="C" class="language-c C"><code><span class="token class-name">int32_t</span> <span class="token function">product</span><span class="token punctuation">(</span><span class="token class-name">int32_t</span> <span class="token operator">*</span>arr<span class="token punctuation">,</span> <span class="token class-name">uint32_t</span> length<span class="token punctuation">)</span>
+</code></pre><p>Nos brinda información sobre el nombre que la identifica, la cantidad y tipo de parámetros que recibe, y el tipo del dato que devuelve. Siempre que se use o implemente esta función, debe coincidir en todos estas características. Cuando trabajamos con el compilador de C, este contrato es respetado automáticamente.</p>
+<p>Pero, ¿Qué pasa si se quiere llamar a esta función desde ASM? ¿Y si queremos implementarla en ASM y luego llamarla desde C?<br>
+Depende de la plataforma, vamos a tener que definir el alcance de nuestro contrato en términos de la plataforma particular.</p>
+<p>Luego, cualquier lenguaje que genere código objeto y respete el contrato de función puede interactuar con funciones ubicadas en bibliotecas binarias (código objeto) que adhieran al contrato.</p>
+<p>Para detallar este comportamiento vamos a precisar hablar de la ABI (Interfaz Binaria de Aplicación). Una ABI define contratos sobre varios elementos tales como el formato de los archivos objeto y ejecutables, el uso de bibliotecas compartidas, parámetros pasados a un proceso, ubicación de las tablas globales del sistema, etc. Pero los que nos interesan en este momento son:</p>
+<ul>
+<li>El conjunto de instrucciones.</li>
+<li>El tamaño y alineación de los tipos de datos primitivos ¹.</li>
+<li>La forma de enviar y recibir información usando funciones del sistema (Convención de llamada para System Calls, como la que usamos en <code>HolaMundo.asm</code> para imprimir por consola).</li>
+<li>La forma de enviar y recibir información usando funciones de usuario (Convención de llamada) .</li>
+</ul>
+<p>¹ Decimos que un dato está alineado a N bytes cuando la dirección de memoria dónde está almacenado es múltiplo de N.</p>
+<p>La ABI que usamos define dos convenciones:</p>
+<ul>
+<li>En x86-64/Linux (64bits) se denomina System V AMD64 ABI</li>
+<li>En x86/Linux (32bits) se denomina System V i386 ABI</li>
+</ul>
+<p>Nos interesan las dos ya que la primera la usaremos durante la primer mitad de la materia y la segunda cuando trabajemos en System Programming.</p>
+<h2 id="convención-de-llamadas">Convención de llamadas </h2>
+<p>La convención de llamadas define:</p>
+<ul>
+<li>
+<p>En qué registros o posiciones de memoria deben estar los parámetros para llamar a una función (o donde esperarlos, desde el punto de vista de la función llamada).</p>
+<ul>
+<li>
+<p>En 32 bits, los parámetros se pasan pusheados a la pila de <strong>derecha a izquierda</strong>¹.</p>
+</li>
+<li>
+<p>En 64 bits, los parámetros se pasan por distintos registros según su tipo:</p>
+<ul>
+<li>Enteros y punteros se pasan por RDI, RSI, RDX, RCX, R8 y R9 (de <strong>izquierda a derecha</strong>²).</li>
+<li>Flotantes se pasan por XMM0, XMM1, ... , XMM7 (de <strong>izquierda a derecha</strong>²).</li>
+<li>Para todos los tipos, si se agotan los registros antes mencionados (hay más pero no forman parte de la convención, por ejemplo los XMM del 8 al 15), se pasarán por la pila pusheando de <strong>derecha a izquierda</strong>¹.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>En qué registro esperar el valor de retorno de la función llamada (o donde escribirlo, desde el punto de vista de la función llamada).</p>
+<ul>
+<li>En 32 bits, el valor de retorno se espera en EAX.</li>
+<li>En 64 bits, el valor de retono se espera en RAX, si es un entero o puntero, y en XMM0 si es un flotante.</li>
+</ul>
+</li>
+<li>
+<p>Qué alineamiento debe tener la <strong>pila</strong> (<strong>stack</strong>) al llamar a una función. Tanto en 32 como en 64 bits, la pila debe estar alineada a 16 bytes al momento de llamar a una función de C. ¿Por qué? Hay funcioes que hacen uso operaciones de registros largos (XMM, YMM) que requieren datos alineados a 16 bytes. Si nosotros al llamar a una función no respetamos la alineación y resulta que esa función no llama a ninguna otra que dependa de la alineación de la pila para operar, no pasa nada. Pero si sin que lo sepamos llama a otra que utiliza dichas operaciones, no va a chequear el estado de alineación de la pila antes de hacerlo, porque asume que fue llamada con la pila correctamente alineada, y por tanto va a fallar.</p>
+</li>
+</ul>
+<p>¹ En relación al orden en que están en la declaración de la función. También se puede decir que se pushean desde el último al primero.</p>
+<p>² También en relación al orden en que están en la declaración de la función.</p>
+<h2 id="convención-de-registros">Convención de registros </h2>
+<p>¿Qué pasa con los registros en uso al realizar una llamada? ¿Conservan sus valores al regresar? Algunos sí, otros no.</p>
+<p>Vamos a dividir los registros entre</p>
+<ul>
+<li>
+<p><em><strong>no volátiles</strong></em> o <em><strong>callee-saved</strong></em>: la función llamada debe encargarse de que, al terminar, estos registros tengan los mismos valores que al comienzo. Estos son:</p>
+<ul>
+<li>En 64 bits: RBX, RBP, R12, R13, R14, R15.</li>
+<li>En 32 bits: EBX, EBP, ESI, EDI</li>
+</ul>
+</li>
+<li>
+<p><em><strong>volátiles</strong></em> o <em><strong>caller-saved</strong></em> : la función llamada no tiene obligación de conservarlos, si los quiere debe conservalos la función llamadora.</p>
+</li>
+</ul>
+<p>Menciones especiales:</p>
+<ul>
+<li>RSP/ESP se puede considerar como un registro no volátil dada su función específica como tope de la pila.</li>
+<li>R10 y R11 no están ni en el grupo de los registros por los que se pasan parámetros ni en el grupo de los registros no volátiles, no se olviden de su existencia.</li>
+<li>XMM8 a XMM15 no están en el grupo de los registros por los que se pasan parámetros pero están a disposición, no se olviden de su existencia.</li>
+</ul>
+<h2 id="stack-frame">Stack frame </h2>
+<p>El stack frame es la porción de la pila que le corresponde a una función durante su ejecución. Está delimitado por el puntero en el registro RBP, que corresponde a la base de la pila y en cuya posición se encuentra el puntero a la base de la pila de la función llamadora, y el puntero en el registro RSP, que corresponde al tope de la pila y es el que usan las instruciones PUSH, POP, CALL y RET (entre otras), para interactuar con la pila.</p>
+<ul>
+<li>PUSH decrementa el valor de RSP (le resta 8 al puntero, recordemos que la pila "crece hacia abajo", o sea, crece hacia direcciones más chicas) y luego escribe sobre la posición a la que apunta.</li>
+<li>POP primero lee el valor almacenado en la posición apuntada por el RSP y luego incrementa su valor (le suma 8 al puntero).</li>
+<li>CALL realiza un PUSH de la dirección de retorno y luego escribe la dirección de salto al RIP.</li>
+<li>RET realiza un POP de la dirección de retorno y la escribe en el RIP.</li>
+</ul>
+<p>Dicho esto, cabe destacar que si la convención de llamada dice que debemos llamar a las funciones de C con la pila alineada a 16, y si la instrucción CALL hace un PUSH, entonces cuando la función ejecute su primer instrucción la pila estará <strong>desalineada</strong>. Para alinearla y mantener en condiciones el stack frame, utilizamos dos secciones de código en toda función (que queremos que interactúe con C) denominadas prólogo y epílogo.</p>
+<p><img src="../../img/pr%C3%B3logo%20y%20ep%C3%ADlogo.png" alt="Prólogo y Epílogo"></p>
+<p>Prólogo: esta es la sección en la que alineamos la pila a la vez que establecemos la base para el stack frame. Pusheamos el valor actual de RBP que contiene el puntero a la base del stack frame de la función llamadora, y luego asignamos el valor del RSP actual al RBP como nueva base. En esta sección también estarían los push de los registros no volátiles que querramos usar, para así preservar los valores que corresponden a la función llamadora.</p>
+<p>Epílogo: acá restauramos los valores de los registros no volátiles que preservamos en el prólogo, popeandolos en el orden contrario al que los pusheamos. Esto incluye al RBP, el primer registro no volátil pusheado, que recupera el valor de la base del stack de la función anterior y deja al RSP apuntando al mismo lugar al que apuntaba al ejecutarse la primer instrucción. Dadas esas condiciones, el RET puede recuperar correctamente el valor de retorno, y la función llamadora retomar su ejecución.</p>
+<h1 id="bajando-a-tierra">Bajando a tierra </h1>
+<p>Pongamos un poco en práctica estos conceptos implementando algunas funciones simples.</p>
+<pre data-role="codeBlock" data-info="C" class="language-c C"><code><span class="token class-name">uint32_t</span> <span class="token function">alternate_sum_4</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span> x1<span class="token punctuation">,</span> <span class="token class-name">uint32_t</span> x2<span class="token punctuation">,</span> <span class="token class-name">uint32_t</span> x3<span class="token punctuation">,</span> <span class="token class-name">uint32_t</span> x4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p>Tenemos una función simple con 4 parámetros de tipo entero no signado de 32 bits, que devuelve un resultado del mismo tipo: <code>x1 - x2 + x3 - x4 = y</code>.<br>
+Lo primero que tenemos que identificar es dónde vamos a encontrar estos valores, siempre sirve dejar un comentario en el cuerpo de la función que establezca la relación entre los registros y sus valores, no solo para los parámetros sino también para aquellos que usamos como variables locales.</p>
+<pre data-role="codeBlock" data-info="ASM" class="language-asm ASM"><code>; parametros: 
+; x1 --&gt; EDI
+; x2 --&gt; ESI
+; x3 --&gt; EDX
+; x4 --&gt; ECX
+alternate_sum_4:
+
+  sub EDI, ESI
+  add EDI, EDX
+  sub EDI, ECX
+
+  mov EAX, EDI
+  ret
+</code></pre><p>Noten cómo la solución utiliza los registros del tamaño adecuado. Bien podría haber utilizado RDI, RSI, RDX y RCX y que funcione bien, pero nada garantiza que los 32 bits más significativos del registro vayan a estar limpios cuando el tipo de dato especificado es más pequeño. El problema se vuelve aún más molesto cuando tenemos en cuenta que los movimientos entre registros de 32 bits no limpian los bits más altos que corresponden al registro completo, cosa que sí garantizan los movimientos entre registros menores a 32 bits. En conclusión, siempre presten atención al tamaño del dato, usen los registros del tamaño correcto, y no van a tener problemas.</p>
+<p>¿Y qué pasó con el stack frame?¿Por qué no hay prólogo y epílogo? Esta función es muy pequeña y no llama a otras funciones en ningún momento, por lo que no necesita conformar con ninguna convención. Si, en cambio, tuviese que llamar a funciones de C para realizar las operaciones, sería necesario el armado del stack frame. En general, las funciones son más complejas y largas que esta, y tarde o temprano precisan llamar a otras funciones, por lo que es buena práctica que lo primero que hagamos al implementar cualquier función sea escribir el prólogo y el epílogo.<br>
+Veamos cómo se implementaría la misma función pero si hubiese que llamar a funciones de C:</p>
+<pre data-role="codeBlock" data-info="ASM" class="language-asm ASM"><code>;importamos las funciones de C que queremos usar
+extern sumar_c 
+extern restar_c
+
+;########### SECCION DE DATOS
+section .data
+
+;########### SECCION DE TEXTO (PROGRAMA)
+section .text
+
+; parametros: 
+; x1 --&gt; EDI
+; x2 --&gt; ESI
+; x3 --&gt; EDX
+; x4 --&gt; ECX
+alternate_sum_4_using_c:
+  ;prologo
+  push RBP ;pila alineada
+  mov RBP, RSP ;strack frame armado
+  push R12
+  push R13	; preservo no volatiles, al ser 2 la pila queda alineada
+
+  mov R12D, EDX ; guardo los parámetros x3 y x4 ya que están en registros volátiles
+  mov R13D, ECX ; y tienen que sobrevivir al llamado a función
+
+  call restar_c 
+  ;recibe los parámetros por EDI y ESI, de acuerdo a la convención, y resulta que ya tenemos los valores en esos registros
+  
+  mov EDI, EAX ;tomamos el resultado del llamado anterior y lo pasamos como primer parámetro
+  mov ESI, R12D
+  call sumar_c
+
+  mov EDI, EAX
+  mov ESI, R13D
+  call restar_c
+
+  ;el resultado final ya está en EAX, así que no hay que hacer más nada
+
+  ;epilogo
+  pop R13 ;restauramos los registros no volátiles
+  pop R12
+  pop RBP ;pila desalineada, RBP restaurado, RSP apuntando a la dirección de retorno
+  ret
+</code></pre><p>En esta implementación utilizamos registros no volátiles para preservar valores a través de un llamado a función pero es posible que en algunas funciones tengamos más datos que registros no volátiles disponibles. En ese caso utilizaríamos la pila para almacenarlos, ya sea guardandolos en una posición fija respecto de la base del stack frame (previa reserva de ese espacio) o bien pusheandolos justo antes del llamado y popeandolos al regresar del mismo. Cuál de las dos opciones es conveniente depende del caso de uso. Por ejemplo, en este caso tenemos a x3 que precisamos que sobreviva un llamado a función y x4 que precisamos que sobreviva dos llamados, si no tuviésemos registros no volátiles, podríamos pushear x3 justo antes de llamar a sumar_c y popearlo justo después, pero si lo hacemos con x4 tendríamos que hacerlo dos veces, una por sumar_c y otra por restar_c, o bien podríamos pushearlo antes de sumar_c y popearlo después de restar_c, pero hacer este tipo de movimientos no es aconsejable, es fácil cometer errores y difícil encontrarlos. En cambio, conviene reservar una posición en la pila para x4 y leerlo de ahí cuando sea necesario. Veamos cómo quedaría:</p>
+<pre data-role="codeBlock" data-info="ASM" class="language-asm ASM"><code>;importamos las funciones de C que queremos usar
+extern sumar_c 
+extern restar_c
+
+;########### SECCION DE DATOS
+section .data
+
+;########### SECCION DE TEXTO (PROGRAMA)
+section .text
+
+; parametros: 
+; x1 --&gt; EDI
+; x2 --&gt; ESI
+; x3 --&gt; EDX
+; x4 --&gt; ECX
+alternate_sum_4_using_c_alternative:
+  ;prologo
+  push RBP ;pila alineada
+  mov RBP, RSP ;strack frame armado
+  sub RSP, 16 ; muevo el tope de la pila 8 bytes para guardar x4, y 8 bytes para que quede alineada
+
+  mov [RBP-8], RCX ; guardo x4 en la pila
+
+  push RDX  ;preservo x3 en la pila, desalineandola
+  sub RSP, 8 ;alineo
+  call restar_c 
+  add RSP, 8 ;restauro tope
+  pop RDX ;recupero x3
+  
+  mov EDI, EAX
+  mov ESI, EDX
+  call sumar_c
+
+  mov EDI, EAX
+  mov ESI, DWORD [RBP - 8] ;leo x4 de la pila
+  call restar_c
+
+  ;el resultado final ya está en EAX, así que no hay que hacer más nada
+
+  ;epilogo
+  add RSP, 16 ;restauro tope de pila
+  pop RBP ;pila desalineada, RBP restaurado, RSP apuntando a la dirección de retorno
+  ret
+</code></pre><p>Por si tienen dudas sobre qué hacen sumar_c y restar_c, acá están sus implementaciones:</p>
+<pre data-role="codeBlock" data-info="C" class="language-c C"><code><span class="token class-name">uint32_t</span> <span class="token function">sumar_c</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span> a<span class="token punctuation">,</span><span class="token class-name">uint32_t</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword keyword-return">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+
+<span class="token class-name">uint32_t</span> <span class="token function">restar_c</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span> a<span class="token punctuation">,</span><span class="token class-name">uint32_t</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword keyword-return">return</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre><h1 id="un-poco-de-gdb">Un poco de GDB </h1>
+<p>Si se saltearon la sección de debugging de la guía de C (hacia el final de la guía avanzada), vuelvan acá después de haberla leído. Ahora sí, reconozcan a su nuevo mejor amigo: <code>GDB</code>. GDB (GNU Debugger) es un debugger que se utiliza desde la consola de comandos. Puede parecer un poco feo y complicado al comienzo, pero al final sólo resulta ser feo, y es invaluable a la hora de encontrar problemas en nuestro código, más aún en un lenguaje como assembler, que no se caracteriza por ser fácil de leer. Cuanto antes se acostumbren a usarlo, mejor la van a pasar en esta materia, así que repasemos las cuestiones básicas, ahora con código de assembler.</p>
+<p>Vamos a explorarlo con la función que implementamos recién, les recomiendo que vayan reproduciendo los pasos a medida que leen, así ya se van interiorizando.<br>
+Para ejecutar un programa con GDB basta con escribir 'gdb' antes del nombre del ejecutable en la consola:</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell shell"><code>  $ gdb <span class="token operator">&lt;</span>ejecutable<span class="token operator">&gt;</span>
+</code></pre><p>En este caso, compilaremos y exploraremos <code>main.c</code></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell shell"><code>  $ <span class="token function">make</span> main
+  $ gdb ./main
+</code></pre><p>Veremos un texto similar a este en la consola:</p>
+<p><img src="../../img/GDB%20-%201.png" alt="GDB - 1"></p>
+<p>Para ejecutar el código basta con tipear <code>r</code> y darle <code>enter</code>, pero, como no establecimos ningún breakpoint, la ejecución terminará y no veremos nada.</p>
+<p>Para establecer breakpoints tenemos varias opciones, las que más vamos a usar son estas:</p>
+<pre data-role="codeBlock" data-info="gdb" class="language-gdb gdb"><code>  &gt;&gt;&gt; b &lt;nombre_de_funcion&gt;
+  &gt;&gt;&gt; b &lt;nombre_de_archivo&gt;:&lt;numero_de_linea&gt;
+</code></pre><p>Que en nuestro caso lucirían así:</p>
+<pre data-role="codeBlock" data-info="gdb" class="language-gdb gdb"><code>  &gt;&gt;&gt; b alternate_sum_4_using_c
+  &gt;&gt;&gt; b ABI.asm:36
+</code></pre><p>Nos confirma que se estableció correctamente:</p>
+<p><img src="../../img/GDB%20-%202.png" alt="GDB - 2"></p>
+<p>Y ahora sí podemos ejecutarlo para inspeccionar. Si tienen instalado <a href="https://github.com/cyrus-and/gdb-dashboard">gdb-dashboard</a> (junto con pygments), van a ver algo como esto:</p>
+<p><img src="../../img/GDB%20-%203.png" alt="GDB - 3"></p>
+<p>Observemos algunas de sus secciones:</p>
+<ul>
+<li>En la sección Assembly pueden ver una reconstrucción del assembly siendo ejecutado a partir del binario.</li>
+<li>En la sección Breakpoints pueden ver un listado de los breakpoints establecidos en este momento. Pueden establecer nuevos en cualquier punto de la ejecución y pueden eliminarlos con el comando <code>delete x</code> donde x es el id del breakpoint (número entre corchetes a la izquierda de todo).</li>
+<li>En la sección Registers verán el valor contenido actualmente por los registros de propósito general, además de las eflags y los selectores de segmento (estos últimos los veremos en la segunda mitad de la materia).</li>
+<li>En la sección Source tenemos la porción del archivo fuente que corresponde a los alrededores del código binario que se está ejecutando. Acá vemos assembly pero si estuviesemos debuggeando una función en C veríamos C.</li>
+<li>En la sección Stack vemos la cadena de llamadas que nos trajeron hasta este punto del código. En este caso primero se llamó a la función <code>main</code> de <code>main.c</code> y esta llamó a <code>alternate_sum_4_using_c</code> de <code>ABI.asm</code>.</li>
+</ul>
+<p>Estamos parados en la primer instrucción de <code>alternate_sum_4_using_c</code>, aún no se ejecutó. Podemos observar que el valor de RSP termina en 8, eso indica que la pila no está alineada, como es de esperar al inicio de una función (si terminase en 0 estaría alineada). Desde aquí podemos avanzar línea por línea usando el comando <code>n</code> o <code>next</code> y ver cómo cambian los valores de los registros en cada paso.</p>
+<p><img src="../../img/GDB%20-%204.png" alt="GDB - 4"></p>
+<p>Llegando a la línea 46, si queremos inspeccionar la ejecución de la función llamada tenemos que usar el comando <code>si</code> o <code>step</code>.</p>
+<p><img src="../../img/GDB%20-%205.png" alt="GDB - 5"></p>
+<p>Observen que ahora en la sección Source vemos el código de C y en la sección Variables vemos las variables de la función con sus valores actuales. En la sección Assembly vemos que el compilador decidió (a priori, de forma arbitraria) utilizar EDX para uno de los operandos de la suma, un ejemplo de por qué debíamos preservarlo antes de la llamada.</p>
+<p>Cuando hayan terminado de inspeccionar la función, pasemos a inspeccionar la implementación alternativa que comienza en la ĺínea 69.</p>
+<p>Ponemos un breakpoint en dicha línea y luego ejecutamos <code>c</code> o <code>continue</code> para retomar la ejecución normal hasta el próximo checkpoint o el fin de la ejecución.</p>
+<p>Si avanzamos hasta la línea 75 ya se habrá guardado el parámetro <code>x4</code> en la posición de la pila reservada. Podemos inspeccionar la memoria para ver sus contenidos de varias formas. La más sencilla y directa es usar el comando <code>p</code> o <code>print</code>.</p>
+<pre data-role="codeBlock" data-info="GDB" class="language-gdb GDB"><code>&gt;&gt;&gt; p $rcx  //imprime el contenido del registro RCX
+&gt;&gt;&gt; p *(uint32_t*)$rbp //castea el contenido de RBP como puntero a uint32_t, lo desferencia e imprime el contenido de la dirección de memoria
+</code></pre><p>Observen que al nombrar registros se precisa añadir un símbolo <code>$</code> al comienzo, de lo contrario se interpretaría como un nombre de variable y daría error al no encontrarla.</p>
+<p>Además, el casteo podría haber sido a cualquier otro tipo, incluso structs propios, y los imprimiría de forma prolija y legible. Pueden probarlos con los ejercicios de la guía de C.</p>
+<p>Este comando también permite hacer cálculos aritméticos entre varios registros y constantes, e imprimir el resultado, experimenten por su cuenta. En este momento, nos sirve para imprimir una posición de memoria relativa a la base de la pila y corroborar que se guardó el valor de <code>x4</code>:</p>
+<p><img src="../../img/GDB%20-%206.png" alt="GDB - 6"></p>
+<p>La otra forma de inspeccionar los contenidos de la memoria es mediante el comando <code>x</code>, que se puede ejecutar de las siguientes maneras:</p>
+<pre data-role="codeBlock" data-info="GDB" class="language-gdb GDB"><code>&gt;&gt;&gt; x &lt;expresión de dirección&gt;
+&gt;&gt;&gt; x /&lt;formato&gt; &lt;expresión de dirección&gt;
+&gt;&gt;&gt; x /&lt;largo&gt; &lt;formato&gt; &lt;expresión de dirección&gt;
+</code></pre><p>Donde:</p>
+<ul>
+<li>
+<p><code>expresión de dirección</code> especifica la dirección de memoria cuyos contenidos se mostrarán. Puede ser una dirección o cualquier expresión de C/C++ que evalúe a una dirección.</p>
+</li>
+<li>
+<p><code>formato</code> especifica el formato en que se mostrarán los contenidos de la memoria, pueden ser:</p>
+<ul>
+<li>o - octal</li>
+<li>x - hexadecimal</li>
+<li>d - decimal</li>
+<li>u - decimal sin signo</li>
+<li>t - binario</li>
+<li>f - punto flotante</li>
+<li>a - dirección</li>
+<li>c - caracter</li>
+<li>s - string</li>
+<li>i - instrucción</li>
+</ul>
+<p>Y se pueden agregar los siguientes modificadores para especificar el tamaño de los elementos:</p>
+<ul>
+<li>b - byte</li>
+<li>h - word (16-bit)</li>
+<li>w - double word (32-bit)</li>
+<li>g - quad word (64-bit)</li>
+</ul>
+</li>
+<li>
+<p><code>largo</code> especifica la cantidad de elementos que se imprimirán.</p>
+</li>
+</ul>
+<p>Algunos ejemplos tomados de <a href="https://visualgdb.com/gdbreference/commands/x">Visual GDB</a>:</p>
+<p><img src="../../img/GDB%20-%207.png" alt="GDB - 7"></p>
+<p><img src="../../img/GDB%20-%208.png" alt="GDB - 8"></p>
+<p>Como se imaginarán, esto es solo la punta del iceberg de lo que GDB es capaz de hacer. Les recomiendo revisar la <a href="https://www.sourceware.org/gdb/documentation/">documentación</a> para profundizar en su uso, y recuerden que hay dos apuntes muy útiles en la sección de recursos del campus.</p>
+<h1 id="ejercicios">Ejercicios </h1>
+<p>Programen en assembly las siguientes funciones:</p>
+<ul>
+<li>alternate_sum_8</li>
+<li>product_2_f</li>
+<li>product_9_f</li>
+</ul>
+<p>El archivo que tienen que editar es <code>ABI.asm</code>. Para todas las declaraciones de las funciones en ASM van a encontrar la firma de la función en <code>ABI.h</code>. Completar para cada parámetro en qué registro o posición de la pila se encuentra cada uno.</p>
+<h3 id="compilación-y-testeo">Compilación y Testeo </h3>
+<p>En cada sección encontrarán un archivo [<code>main.c</code>] para que ustedes realicen pruebas básicas de sus funciones. Siéntanse a gusto de manejarlo como crean conveniente.<br>
+Para compilar el código y poder correr las pruebas cortas implementadas por ustedes en main deberá ejecutar <code>make main</code> y luego <code>./runMain.sh</code>.</p>
+<p>En cambio, para compilar el código y correr las pruebas intensivas deberán ejecutar <code>./tester</code>.<br>
+El programa puede correrse con <code>./runTester.sh</code> para verificar que no se pierde memoria ni se realizan accesos incorrectos a la misma.</p>
+<p>Finalmente, para ejecutarlas pruebas de ABI deberán compilar con <code>make abi_enforcer_tester</code> (o <code>make_abi_enforcer_main</code>) y correr con <code>./runAbi.sh</code>.</p>
+<p>⚠️ Por favor lean las advertencias en el <a href="http://README.md">README.md</a> principal del repositorio antes de utilizar el abi tester.<br>
+Esta herramienta se utilizará para evaluar los parciales, así que no dejen de utilizarla!</p>
+<h4 id="pruebas-intensivas-testing">Pruebas intensivas (Testing) </h4>
+<p>Entregamos también una serie de <em>tests</em> o pruebas intensivas para que pueda verificarse el buen funcionamiento del código de manera automática. Para correr el testing se debe ejecutar <code>./runTester.sh</code>, que compilará el <em>tester</em> y correrá todos los tests de la sección provistos por la cátedra. Presten atención a la correcta administración de la memoria dinámica, el script correrá los tests con valgrind y alertará en caso de encontrar errores de memoria.</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
